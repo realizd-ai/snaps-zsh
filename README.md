@@ -77,6 +77,13 @@ Usage: snap [-h|--help] [label...]
 
 Creates a timestamped `.tgz` snapshot of the current project.
 
+`label` is a commit-like message, for example:
+```sh
+snap form added
+```
+
+This creates the snapshot `{project name}-{timestamp}-form-added.tgz`.
+
 - Snapshots exclude common temporary directories:
   - `node_modules/`
   - `.next/`
@@ -120,9 +127,10 @@ It uses Zsh-specific features like advanced globbing and tab completion.
 ## Example Workflow
 
 ```sh
-work myproject         # Switch to project (create if needed)
-snap "initial commit"  # Take a snapshot with label
+work myproject         # Switch to project
+snap initial commit    # Take a snapshot with label
 restore myproject-2025-05-30-15.30-initial-commit.tgz  # Restore snapshot
+# restored to $CODING_ROOT_DIR/myproject-2025-05-30-15.30-initial-commit
 ```
 
 Snapshots are named like:
